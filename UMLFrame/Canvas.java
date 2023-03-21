@@ -1,5 +1,6 @@
 package UMLFrame;
 
+import javax.sound.sampled.Port;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,6 +10,7 @@ import UMLFrame.Canvas;
 import UMLObject.CreateClassObject;
 import UMLObject.Mode;
 import UMLObject.Shape;
+import UMLObject.Line;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -26,6 +28,7 @@ public class Canvas extends JPanel{
     private EventListener listener = null;
     
     private ArrayList<Shape> shapes = new ArrayList<Shape>(); 
+    public Line hintLine = null;
     
     //private Listener
     
@@ -58,6 +61,9 @@ public class Canvas extends JPanel{
       
 	}
 	
+	public ArrayList<Shape> getShapes(){
+		return shapes;
+	}
 
     @Override
 	public void paint(Graphics g) {
@@ -76,9 +82,16 @@ public class Canvas extends JPanel{
 		
 		for(Shape shape : shapes) {
 			shape.draw(g);
+			for(int i = 0;i < 4;i++) {
+				if(shape.getPorts(i) != null)
+					shape.getPorts(i).drawPort(g);
+			}
 		}
-		
-		
+			
+		if(hintLine != null) {
+			hintLine.draw(g);
+		}
 	}
+    
     
 }

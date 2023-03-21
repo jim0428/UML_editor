@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import UMLFrame.Canvas;
 import UMLObject.CreateClassObject;
+import UMLObject.CreateLineObject;
 import UMLObject.CreateUseCaseObject;
 import UMLObject.Mode;
 import UMLObject.UseCase;
@@ -33,7 +34,7 @@ public class ToolBar extends JToolBar{
 		button = new ButtonItem("img/select.png",new CreateClassObject());
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/associationLine.png",new CreateClassObject());
+		button = new ButtonItem("img/associationLine.png",new CreateLineObject());
 		myJPanel.add(button);
 		
 		button = new ButtonItem("img/generalizationLine.png",new CreateClassObject());

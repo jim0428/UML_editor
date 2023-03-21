@@ -16,5 +16,8 @@ public class CreateClassObject extends Mode {
 		canvas.addShape(classObject);
 		canvas.repaint();
 	}
+
+	
+
 	
 }
