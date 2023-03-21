@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import UMLFrame.Canvas;
 import UMLObject.CreateClassObject;
+import UMLObject.CreateUseCaseObject;
 import UMLObject.Mode;
+import UMLObject.UseCase;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -43,7 +45,7 @@ public class ToolBar extends JToolBar{
 		button = new ButtonItem("img/class.png",new CreateClassObject());
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/useCase.png",new CreateClassObject());
+		button = new ButtonItem("img/useCase.png",new CreateUseCaseObject());
 		myJPanel.add(button);
 		
 	}

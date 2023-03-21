@@ -62,7 +62,7 @@ public class Canvas extends JPanel{
     @Override
 	public void paint(Graphics g) {
 	    setPreferredSize(new Dimension(WIDTH, HEIGHT));
-	    setBackground(Color.WHITE);
+	    //setBackground(Color.WHITE);
 		/* set canvas area */ /* set painting color */
 		Dimension dim = getSize();
 		g.setColor(Color.WHITE);
