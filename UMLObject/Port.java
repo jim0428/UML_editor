@@ -17,20 +17,33 @@ public class Port{
 		this.height = 5;
 	}
 	
+	public int getX() {
+		return x1;
+	}
+	
+	public int getY() {
+		return y1;
+	}
+	
+	public void setNewPortLocation(int newX,int newY) {
+		this.x1 = newX;
+		this.y1 = newY;
+	}
+	
 	//會在class或usecase中被調用
 	public void drawPort(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(x1, y1, width, height);
 	}
 	
-	/*public addLine(Line) {
-		
-	}*/
-	
-	public boolean isCantained(int x,int y) {
+	public Port isCantained(int x,int y) {
 		if (Math.abs(x - x1) <= 10 && Math.abs(y - y1) <= 10){
-			return true;
+			return this;
 		}
-		return false;
+		return null;
 	}
+	
+	/*public addLine(Line) {
+	
+	}*/
 }

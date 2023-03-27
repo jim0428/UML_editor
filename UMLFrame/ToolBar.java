@@ -7,6 +7,7 @@ import UMLObject.CreateClassObject;
 import UMLObject.CreateLineObject;
 import UMLObject.CreateUseCaseObject;
 import UMLObject.Mode;
+import UMLObject.SelectMode;
 import UMLObject.UseCase;
 
 import java.awt.*;
@@ -31,7 +32,7 @@ public class ToolBar extends JToolBar{
         // Add components to left panel
 		myJPanel.setLayout(new GridLayout(toolbarCounts,1));
         
-		button = new ButtonItem("img/select.png",new CreateClassObject());
+		button = new ButtonItem("img/select.png",new SelectMode());
 		myJPanel.add(button);
 		
 		button = new ButtonItem("img/associationLine.png",new CreateLineObject());

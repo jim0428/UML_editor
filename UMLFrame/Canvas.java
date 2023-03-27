@@ -8,6 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import UMLFrame.Canvas;
 import UMLObject.CreateClassObject;
+import UMLObject.Group;
 import UMLObject.Mode;
 import UMLObject.Shape;
 import UMLObject.Line;
@@ -24,12 +25,14 @@ public class Canvas extends JPanel{
     private static final int HEIGHT = 500;
     
     private static Canvas canvas = null;
+    
     private Mode currentMode = null;
     private EventListener listener = null;
-    
+   
     private ArrayList<Shape> shapes = new ArrayList<Shape>(); 
     public Line hintLine = null;
-    
+    public Shape selectedShape = null;
+    public Group group = null;
     //private Listener
     
     public static Canvas getCanvas(){
@@ -74,23 +77,35 @@ public class Canvas extends JPanel{
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, dim.width, dim.height);
 		
-		System.out.println(shapes);
-		
-//		for(int i = shapes.size() - 1; i >= 0;i++) {
-//			shapes.get(i).draw(g);	
-//		}
+		//System.out.println(shapes);
 		
 		for(Shape shape : shapes) {
 			shape.draw(g);
-			for(int i = 0;i < 4;i++) {
+			/*for(int i = 0;i < 4;i++) {
 				if(shape.getPorts(i) != null)
 					shape.getPorts(i).drawPort(g);
+			}*/
+		}
+		if(selectedShape != null) {
+			for(int i = 0;i < 4;i++) {
+				if(selectedShape.getPorts(i) != null)
+					selectedShape.getPorts(i).drawPort(g);
 			}
 		}
 			
+				
 		if(hintLine != null) {
 			hintLine.draw(g);
 		}
+		
+		if(group != null) {
+			group.draw(g);
+		}
+		
+		
+		/*if(selectedShape != null) {
+			selectedShape.draw(g);
+		}*/
 	}
     
     

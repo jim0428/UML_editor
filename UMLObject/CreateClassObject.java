@@ -7,6 +7,7 @@ public class CreateClassObject extends Mode {
 		System.out.println("123");
 		
 	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub

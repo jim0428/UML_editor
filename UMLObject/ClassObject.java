@@ -1,8 +1,11 @@
 package UMLObject;
 
 import javax.swing.*;
+
+import UMLObject.Shape;
+
 import java.awt.*;
-import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class ClassObject extends Shape {
@@ -16,6 +19,7 @@ public class ClassObject extends Shape {
 		this.y1 = y;
 		this.x2 = x1 + width;
 		this.y2 = y1 + height;
+		this.selected = false;
 		setPorts(x,y);
 	}
 	
@@ -58,6 +62,58 @@ public class ClassObject extends Shape {
 		return ports[pos];
 	}
 	
-
-
+	@Override
+	public Shape checkClicked(Point p) {
+		//點下去的地方要比左上角x右邊，而且要比左上角的y低，比右下角的x左邊，比右下角的y上面
+		if(p.x - this.x1 > 0 && p.y - this.y1 > 0 && p.x - this.x2 < 0 && p.y - this.y2 < 0) {
+			return this;
+		}
+		return null;
+	}
+	
+	@Override
+	public Shape checkRegion(Point startP,Point endP) {
+		int offsetX = endP.x - startP.x;
+		int offsetY = endP.x - startP.x;
+		
+		
+		
+		return null;
+	}
+	
+	@Override
+	public void setNewObjLocation(int moveX,int moveY) {
+		this.x1 = this.x1 + moveX;
+		this.y1 = this.y1 + moveY;
+		this.x2 = this.x1 + width;
+		this.y2 = this.y1 + height;
+		
+		int width_mid = (width/2);
+		int height_mid = (height/2);
+		//上
+		ports[0].setNewPortLocation(this.x1 + width_mid,this.y1 - 5);
+		//右
+		ports[1].setNewPortLocation(this.x1 + width,this.y1 + height_mid);
+		//下
+		ports[2].setNewPortLocation(this.x1 + width_mid,this.y1 + height);
+		//左
+		ports[3].setNewPortLocation(this.x1 - 5,this.y1 + height_mid);
+	}
+	
+	@Override
+	public void setSelectedState() {
+		//把狀態相反
+		this.selected = !this.selected;
+	}
+	
+	@Override
+	public boolean getSelectedState() {
+		return this.selected;
+	}
+	
+	@Override
+	public void resetSelectedState() {
+		this.selected = false;
+	}
+	
 }
