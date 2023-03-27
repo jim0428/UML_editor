@@ -54,7 +54,6 @@ public class ClassObject extends Shape {
 		g.drawString(this.name, x1 + (width / 6), y1 + (height / 6));
 		g.drawLine(x1, y1 + portion, x2, y1 + portion);
 		g.drawLine(x1, y1 + portion * 2, x2, y1 + portion * 2);	
-		
 	}
 
 	@Override
@@ -74,9 +73,25 @@ public class ClassObject extends Shape {
 	@Override
 	public Shape checkRegion(Point startP,Point endP) {
 		int offsetX = endP.x - startP.x;
-		int offsetY = endP.x - startP.x;
+		int offsetY = endP.y - startP.y;
 		
 		
+		if(offsetX > 0 && offsetY > 0) { //滑鼠到右下
+			if(startP.x < this.x1 && startP.y < this.y1 &&  endP.x > this.x2 && endP.y > this.y2)
+				return this;
+		} 
+		else if(offsetX < 0 && offsetY > 0) { //滑鼠到左下
+			if(startP.x > this.x2 && startP.y < this.y1 &&  endP.x < this.x1 && endP.y > this.y2)
+				return this;
+		}
+		else if(offsetX > 0 && offsetY < 0) { //滑鼠到右上
+			if(startP.x < this.x1 && startP.y > this.y2 &&  endP.x > this.x2 && endP.y < this.y1)
+				return this;
+		}
+		else if(offsetX < 0 && offsetY < 0) { //滑鼠到左上
+			if(startP.x > this.x2 && startP.y > this.y2 &&  endP.x < this.x1 && endP.y < this.y1)
+				return this;
+		}
 		
 		return null;
 	}
@@ -98,12 +113,13 @@ public class ClassObject extends Shape {
 		ports[2].setNewPortLocation(this.x1 + width_mid,this.y1 + height);
 		//左
 		ports[3].setNewPortLocation(this.x1 - 5,this.y1 + height_mid);
+	
 	}
 	
 	@Override
-	public void setSelectedState() {
+	public void setSelectedState(boolean state) {
 		//把狀態相反
-		this.selected = !this.selected;
+		this.selected = state;
 	}
 	
 	@Override

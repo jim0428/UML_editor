@@ -66,7 +66,6 @@ public class ToolBar extends JToolBar{
 		}
 		
 		private class chg_bgd_col implements ActionListener {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub

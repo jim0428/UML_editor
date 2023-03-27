@@ -32,6 +32,8 @@ public class UML extends JFrame {
     }
     
     public static void main(String[] args) {
+    	
+    	
         UML mainwindow = new UML();
         
         mainwindow.setTitle("Drawing Program");

@@ -13,6 +13,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MenuBar extends JMenuBar {
+	Canvas canvas = Canvas.getCanvas();
+	
 	private JMenuBar menuBar;
 	
 	private JMenu menu_file,menu_edit;
@@ -34,6 +36,7 @@ public class MenuBar extends JMenuBar {
 		
 		
 		gp = new JMenuItem("Group");
+		gp.addActionListener(new GroupFunc());
 		menu_edit.add(gp);
 	
 		
@@ -41,6 +44,14 @@ public class MenuBar extends JMenuBar {
 		menu_edit.add(ugp);
 			
 		menuBar.add(menu_edit);
+	}
+	
+	private class GroupFunc implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			canvas.toGroup();
+		}
 	}
 	
 //	public void addListener(Canvas can) {
@@ -51,6 +62,7 @@ public class MenuBar extends JMenuBar {
 //	        	can.setColor(Color.BLACK);
 //	        }
 //	     });
+//		
 //	}
 	
 	public JMenuBar getJmenu(){

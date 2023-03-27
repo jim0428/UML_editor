@@ -5,19 +5,24 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 public class Shape implements ObjectFactory {
-	protected int x1,y1,x2,y2,height,width;
-	protected boolean selected;
+	protected int x1 = -1 ,y1 = -1,x2 = -1 ,y2 = -1,height = -1,width = -1;
+	protected boolean selected = false;
 	
-	//Port 
-		
-	/*Shape(int x,int y){
-		this.width = 100;
-		this.height = 150;
-		this.x1 = x;
-		this.y1 = y;
-		this.x2 = x1 + width;
-		this.y2 = y1 + height;
-	}*/
+	public int getX1() {
+		return x1;
+	}
+	
+	public int getX2() {
+		return x2;
+	}
+	
+	public int getY1() {
+		return y1;
+	}
+	
+	public int getY2() {
+		return y2;
+	}
 	
 	@Override
 	public void draw(Graphics g) {
@@ -44,7 +49,7 @@ public class Shape implements ObjectFactory {
 	}
 	
 	//for Obj selected
-	public void setSelectedState() {
+	public void setSelectedState(boolean state) {
 		
 	}
 	

@@ -31,8 +31,9 @@ public class Canvas extends JPanel{
    
     private ArrayList<Shape> shapes = new ArrayList<Shape>(); 
     public Line hintLine = null;
-    public Shape selectedShape = null;
+    public Shape clickSelectedShape = null;
     public Group group = null;
+    public boolean dragging = false; 
     //private Listener
     
     public static Canvas getCanvas(){
@@ -68,45 +69,41 @@ public class Canvas extends JPanel{
 		return shapes;
 	}
 
+	public void toGroup() {
+		group.setCoordinate();
+		this.addShape(group);
+		//System.out.println(shapes);
+		this.canvas.repaint();
+	}
+	
     @Override
 	public void paint(Graphics g) {
 	    setPreferredSize(new Dimension(WIDTH, HEIGHT));
-	    //setBackground(Color.WHITE);
 		/* set canvas area */ /* set painting color */
 		Dimension dim = getSize();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, dim.width, dim.height);
 		
-		//System.out.println(shapes);
-		
 		for(Shape shape : shapes) {
 			shape.draw(g);
-			/*for(int i = 0;i < 4;i++) {
-				if(shape.getPorts(i) != null)
-					shape.getPorts(i).drawPort(g);
-			}*/
-		}
-		if(selectedShape != null) {
-			for(int i = 0;i < 4;i++) {
-				if(selectedShape.getPorts(i) != null)
-					selectedShape.getPorts(i).drawPort(g);
+			if(shape.getSelectedState()) {
+				for(int i = 0;i < 4;i++) {
+					if(shape.getPorts(i) != null)
+						shape.getPorts(i).drawPort(g);
+				}
 			}
 		}
-			
-				
+		
 		if(hintLine != null) {
 			hintLine.draw(g);
 		}
 		
-		if(group != null) {
-			group.draw(g);
+		if(group != null && canvas.dragging) {
+			group.drawHintRegion(g);
 		}
-		
-		
-		/*if(selectedShape != null) {
-			selectedShape.draw(g);
-		}*/
+	
 	}
+    
     
     
 }
