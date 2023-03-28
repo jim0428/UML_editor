@@ -70,9 +70,28 @@ public class Canvas extends JPanel{
 	}
 
 	public void toGroup() {
-		group.setCoordinate();
-		this.addShape(group);
-		//System.out.println(shapes);
+		if(group.getSelectedObj().size() > 1) {
+			group.setCoordinate();
+			this.addShape(group);
+			for(int i = 0;i < shapes.size();i++)
+				if(group.getSelectedObj().contains(shapes.get(i))) {
+					shapes.remove(shapes.get(i));
+					i--;
+				}
+			//System.out.println(shapes);
+			this.canvas.repaint();			
+		}
+	}
+	
+	public void unGroup() {
+
+		if(clickSelectedShape != null && clickSelectedShape.getSelectedObj()!= null) {
+			for(Shape groupingObj : clickSelectedShape.getSelectedObj()) {
+				shapes.add(groupingObj);
+			}
+			shapes.remove(clickSelectedShape);
+		}
+		
 		this.canvas.repaint();
 	}
 	

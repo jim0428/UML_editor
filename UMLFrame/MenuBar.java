@@ -41,6 +41,7 @@ public class MenuBar extends JMenuBar {
 	
 		
 		ugp = new JMenuItem("Ungroup");
+		ugp.addActionListener(new UnGroupFunc());
 		menu_edit.add(ugp);
 			
 		menuBar.add(menu_edit);
@@ -51,6 +52,14 @@ public class MenuBar extends JMenuBar {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			canvas.toGroup();
+		}
+	}
+	
+	private class UnGroupFunc implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			canvas.unGroup();
 		}
 	}
 	

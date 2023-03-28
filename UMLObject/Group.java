@@ -46,8 +46,28 @@ public class Group extends Shape{
 	public void draw(Graphics g) {
 		g.setColor(Color.black);
 		g.drawRect(x1, y1, width, height);
-		//System.out.println(x1 + " " + y1 + " "+ width + " " + height);
+
+		for(Shape s: selectedObjs)
+			s.draw(g);
+		
+		if(this.selected) {
+			drawSelectedPorts(g);
+		}
+		
 	}
+	
+	@Override
+	protected void drawSelectedPorts(Graphics g) {
+		for(Shape s: selectedObjs) {			
+			if(s.getSelectedObj() != null)
+				s.drawSelectedPorts(g);
+			for(int i = 0;i < 4;i++) {
+				if(s.getPorts(i) != null)
+					s.getPorts(i).drawPort(g);
+			}
+		}
+	}
+	
 	
 	public void drawHintRegion(Graphics g) {
 		int offsetX = rightButtom.x - leftUpper.x;
@@ -79,6 +99,7 @@ public class Group extends Shape{
 		selectedObjs.add(s);
 	}
 	
+	@Override
 	public ArrayList<Shape> getSelectedObj(){
 		return selectedObjs;
 	}

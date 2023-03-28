@@ -3,6 +3,7 @@ package UMLObject;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Shape implements ObjectFactory {
 	protected int x1 = -1 ,y1 = -1,x2 = -1 ,y2 = -1,height = -1,width = -1;
@@ -59,5 +60,13 @@ public class Shape implements ObjectFactory {
 	
 	public void resetSelectedState() {
 
+	}
+	
+	public ArrayList<Shape> getSelectedObj(){
+		return null;
+	}
+	
+	protected void drawSelectedPorts(Graphics g) {
+		
 	}
 }
