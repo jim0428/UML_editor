@@ -54,6 +54,10 @@ public class ClassObject extends Shape {
 		g.drawString(this.name, x1 + (width / 6), y1 + (height / 6));
 		g.drawLine(x1, y1 + portion, x2, y1 + portion);
 		g.drawLine(x1, y1 + portion * 2, x2, y1 + portion * 2);	
+		
+		for(int i = 0;i < 4;i++)
+			if(ports[i].getLines())
+				ports[i].drawPort(g);
 	}
 
 	@Override

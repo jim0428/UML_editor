@@ -47,8 +47,10 @@ public class Group extends Shape{
 		g.setColor(Color.black);
 		g.drawRect(x1, y1, width, height);
 
-		for(Shape s: selectedObjs)
+		for(Shape s: selectedObjs) {
 			s.draw(g);
+
+		}
 		
 		if(this.selected) {
 			drawSelectedPorts(g);
@@ -66,6 +68,7 @@ public class Group extends Shape{
 					s.getPorts(i).drawPort(g);
 			}
 		}
+
 	}
 	
 	

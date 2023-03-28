@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Port{
 	private int x1,y1,width,height;
 	//要存line
-	//private ArrayList<Line> Lines = new ArrayList<Line>();
+	private ArrayList<Shape> Lines = new ArrayList<Shape>();
 	
 	public void setPoint(int x1,int y1) {
 		this.x1 = x1;
@@ -28,6 +28,16 @@ public class Port{
 	public void setNewPortLocation(int newX,int newY) {
 		this.x1 = newX;
 		this.y1 = newY;
+	}
+	
+	public void setLine(Line line) {
+		Lines.add(line);
+	}
+	
+	public boolean getLines() {
+		if(Lines.size() != 0)
+			return true;
+		return false;
 	}
 	
 	//會在class或usecase中被調用

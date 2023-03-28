@@ -42,9 +42,11 @@ public class CreateLineObject extends Mode{
 	public void mouseReleased(MouseEvent e) {
 		//這邊還要再判斷有沒有點到另一個點，不能是自己，然後要記得在port那邊存已經有的線 每次都要保存然後畫出來
 		secondP = contain(e.getX(),e.getY(),"second");
-		if(firstP != null && secondP != null) {
+		if(firstP != null && secondP != null && firstP != secondP) {
 			Line line = new Line();
 			line.setLinePort(firstP, secondP);
+			firstP.setLine(line);
+			secondP.setLine(line);
 			canvas.addShape(line);
 		}
 		//然後再reset hintLine startP endP

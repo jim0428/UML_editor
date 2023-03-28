@@ -105,13 +105,15 @@ public class Canvas extends JPanel{
 		
 		for(Shape shape : shapes) {
 			shape.draw(g);
-			if(shape.getSelectedState()) {
-				for(int i = 0;i < 4;i++) {
-					if(shape.getPorts(i) != null)
-						shape.getPorts(i).drawPort(g);
-				}
+			for(int i = 0;i < 4;i++) {
+				if(shape.getPorts(i) != null) {
+					if(shape.getSelectedState() || shape.getPorts(i).getLines()) 
+						shape.getPorts(i).drawPort(g);	
+				}		
 			}
 		}
+			
+		
 		
 		if(hintLine != null) {
 			hintLine.draw(g);
