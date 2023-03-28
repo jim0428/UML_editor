@@ -30,7 +30,7 @@ public class Port{
 		this.y1 = newY;
 	}
 	
-	public void setLine(Line line) {
+	public void setLine(Shape line) {
 		Lines.add(line);
 	}
 	

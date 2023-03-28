@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import UMLFrame.Canvas;
 import UMLObject.CreateClassObject;
+import UMLObject.CreateCompositionObj;
+import UMLObject.CreateGenLine;
 import UMLObject.CreateLineObject;
 import UMLObject.CreateUseCaseObject;
 import UMLObject.Mode;
@@ -38,10 +40,10 @@ public class ToolBar extends JToolBar{
 		button = new ButtonItem("img/associationLine.png",new CreateLineObject());
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/generalizationLine.png",new CreateClassObject());
+		button = new ButtonItem("img/generalizationLine.png",new CreateGenLine());
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/compositionLine.png",new CreateClassObject());
+		button = new ButtonItem("img/compositionLine.png",new CreateCompositionObj());
 		myJPanel.add(button);
 		
 		button = new ButtonItem("img/class.png",new CreateClassObject());

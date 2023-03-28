@@ -30,7 +30,7 @@ public class Canvas extends JPanel{
     private EventListener listener = null;
    
     private ArrayList<Shape> shapes = new ArrayList<Shape>(); 
-    public Line hintLine = null;
+    public Shape hintLine = null;
     public Shape clickSelectedShape = null;
     public Group group = null;
     public boolean dragging = false; 

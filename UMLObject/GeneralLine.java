@@ -2,12 +2,8 @@ package UMLObject;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
-import java.util.ArrayList;
 
-import UMLFrame.Canvas;
-
-public class Line extends Shape{
+public class GeneralLine extends Shape{
 	private Port[] ports = new Port[2];
 	private int arrowW = 10, arrowH = 10;
 
@@ -40,17 +36,11 @@ public class Line extends Shape{
         yn = xn*sin + yn*cos + startY;
         xn = x;
 
-//        int[] xpoints = {endX , (int) xm, (int) xn};
-//        int[] ypoints = {endY, (int) ym, (int) yn};
-        int[] xleftline = {endX , (int) xm};
-        int[] yleftline = {endY, (int) ym};
-        int[] xrightline = {endX , (int) xn};
-        int[] yrightline = {endY, (int) yn};
+        int[] xpoints = {endX , (int) xm, (int) xn};
+        int[] ypoints = {endY, (int) ym, (int) yn};
         
         g.setColor(Color.black);
-        //g.drawPolygon(xpoints, ypoints, 3);
-        g.drawPolygon(xleftline,yleftline,2);
-        g.drawPolygon(xrightline,yrightline,2);
+        g.fillPolygon(xpoints, ypoints, 3);
 		
 	}
 }
