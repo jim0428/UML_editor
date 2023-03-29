@@ -39,11 +39,13 @@ public class SelectMode extends Mode{
 		
 		Shape selectedShape = null;
 		
-		for(int i = 0;i < shapes.size();i++) {
+		for(int i = shapes.size() - 1;i >= 0;i--) {
 			selectedShape = shapes.get(i).checkClicked(startP);
 			if(selectedShape != null) {
 				canvas.clickSelectedShape = selectedShape;
 				canvas.clickSelectedShape.setSelectedState(true);
+				canvas.getShapes().remove(selectedShape);
+				canvas.getShapes().add(selectedShape);
 				System.out.println(canvas.clickSelectedShape.getSelectedState()+" "+canvas.clickSelectedShape);
 				break;
 			}

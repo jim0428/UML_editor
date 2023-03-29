@@ -3,12 +3,14 @@ package UMLObject;
 import javax.swing.*;
 
 import UMLObject.Shape;
+import UMLFrame.Canvas;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class ClassObject extends Shape {
+	Canvas canvas = Canvas.getCanvas();
 	protected String name = "Object name";
 	private Port[] ports = new Port[4];
 	
@@ -20,6 +22,7 @@ public class ClassObject extends Shape {
 		this.x2 = x1 + width;
 		this.y2 = y1 + height;
 		this.selected = false;
+		//this.depth = this.setDefaultDepth(x,y);
 		setPorts(x,y);
 	}
 	
@@ -135,5 +138,41 @@ public class ClassObject extends Shape {
 	public void resetSelectedState() {
 		this.selected = false;
 	}
+	
+	@Override
+	public void setNewName(String Newname) {
+		this.name = Newname;
+		canvas.repaint();
+	}
+	
+//	//處理深度相關
+//	@Override
+//	public int getDepth() {
+//		return this.depth;
+//	}
+//	
+//	@Override
+//	public void setDepth(int newD) {
+//		this.depth = newD % 99;
+//	}
+//	
+//	@Override
+//	protected int setDefaultDepth(int x,int y) {
+//		ArrayList<Shape> shapes = canvas.getShapes();
+//		for(Shape s : shapes) {
+//			//先判斷有沒有在範圍內，建立的範圍內，四個角都要檢查，這邊考慮把checkclicked換成int x,int y傳進去
+//			if(s.checkClicked(new Point(this.x1,this.y1)) != null || 
+//					s.checkClicked(new Point(this.x2,this.y1)) != null ||
+//					s.checkClicked(new Point(this.x1,this.y2)) != null ||
+//					s.checkClicked(new Point(this.x2,this.y2)) != null){
+//				s.setDepth(s.getDepth() + 1);
+//			}
+//		}
+//		
+//		this.depth = 0;
+//		
+//		return depth;
+//	}
+//	//處理深度相關
 	
 }

@@ -69,6 +69,14 @@ public class Canvas extends JPanel{
 		return shapes;
 	}
 
+	public void chgName() {
+		if(this.clickSelectedShape != null) {
+			JFrame jFrame = new JFrame();
+			 String getMessage = JOptionPane.showInputDialog(jFrame, "Enter your message");
+			 clickSelectedShape.setNewName(getMessage);
+		}
+	}
+	
 	public void toGroup() {
 		if(group.getSelectedObj().size() > 1) {
 			group.setCoordinate();
@@ -112,9 +120,7 @@ public class Canvas extends JPanel{
 				}		
 			}
 		}
-			
-		
-		
+					
 		if(hintLine != null) {
 			hintLine.draw(g);
 		}

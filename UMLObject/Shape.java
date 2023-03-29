@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Shape implements ObjectFactory {
 	protected int x1 = -1 ,y1 = -1,x2 = -1 ,y2 = -1,height = -1,width = -1;
 	protected boolean selected = false;
+	protected int depth = -1;
 	
 	public int getX1() {
 		return x1;
@@ -23,6 +24,10 @@ public class Shape implements ObjectFactory {
 	
 	public int getY2() {
 		return y2;
+	}
+	
+	public void setNewName(String newName) {
+		
 	}
 	
 	@Override
@@ -43,6 +48,8 @@ public class Shape implements ObjectFactory {
 	public Shape checkRegion(Point startP,Point endP) {
 		return null;
 	}
+	
+	
 	
 	//for class or useCase
 	public void setNewObjLocation(int moveX,int moveY) {

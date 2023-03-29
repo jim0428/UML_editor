@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import UMLFrame.Canvas;
+
 public class UseCase extends Shape{
 	//這個應該要讓一個class去繼承Shape然後就直接用name
+	Canvas canvas = Canvas.getCanvas();
 	protected String name = "Object name";
 	private Port[] ports = new Port[4];
 	
@@ -129,6 +132,12 @@ public class UseCase extends Shape{
 	@Override
 	public void resetSelectedState() {
 		this.selected = false;
+	}
+	
+	@Override
+	public void setNewName(String Newname) {
+		this.name = Newname;
+		canvas.repaint();
 	}
 	
 }

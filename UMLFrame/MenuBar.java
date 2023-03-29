@@ -32,6 +32,7 @@ public class MenuBar extends JMenuBar {
 		menuBar.add(menu_edit);
 		
 		chg_name = new JMenuItem("Change object name");
+		chg_name.addActionListener(new ChgName());
 		menu_edit.add(chg_name);
 		
 		
@@ -45,6 +46,14 @@ public class MenuBar extends JMenuBar {
 		menu_edit.add(ugp);
 			
 		menuBar.add(menu_edit);
+	}
+	
+	private class ChgName implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			canvas.chgName();
+		}
 	}
 	
 	private class GroupFunc implements ActionListener {
