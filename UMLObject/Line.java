@@ -7,25 +7,22 @@ import java.util.ArrayList;
 
 import UMLFrame.Canvas;
 
-public class Line extends Shape{
-	private Port[] ports = new Port[2];
+public class Line extends BaseLineClass{
 	private int arrowW = 10, arrowH = 10;
-
-	public void setLinePort(Port firstP,Port secondP) {
-		this.ports[0] = firstP;
-		this.ports[1] = secondP;
+	
+	public Line(Port firstP,Port secondP) {
+		super(firstP,secondP);
+		
 	}
 	
 	@Override
 	public void draw(Graphics g) {
-		int startX = ports[0].getX();
-		int startY = ports[0].getY();
-		int endX   = ports[1].getX();
-		int endY   = ports[1].getY();
-		
-		g.setColor(Color.black);
-		g.drawLine(startX,startY,endX,endY);
-		
+		super.draw(g);
+		this.drawArrow(g);
+	}
+
+	private void drawArrow(Graphics g) {
+		// TODO Auto-generated method stub
 		// 三角形的點, 考慮線條角度
 		int dx = endX - startX, dy = endY - startY;
 		double D = Math.sqrt(dx*dx + dy*dy);
@@ -40,17 +37,14 @@ public class Line extends Shape{
         yn = xn*sin + yn*cos + startY;
         xn = x;
 
-//        int[] xpoints = {endX , (int) xm, (int) xn};
-//        int[] ypoints = {endY, (int) ym, (int) yn};
         int[] xleftline = {endX , (int) xm};
         int[] yleftline = {endY, (int) ym};
         int[] xrightline = {endX , (int) xn};
         int[] yrightline = {endY, (int) yn};
         
         g.setColor(Color.black);
-        //g.drawPolygon(xpoints, ypoints, 3);
+
         g.drawPolygon(xleftline,yleftline,2);
         g.drawPolygon(xrightline,yrightline,2);
-		
 	}
 }

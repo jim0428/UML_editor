@@ -29,7 +29,7 @@ public class Canvas extends JPanel{
     private Mode currentMode = null;
     private EventListener listener = null;
    
-    private ArrayList<Shape> shapes = new ArrayList<Shape>(); 
+    private ArrayList<Shape> shapes = new ArrayList<Shape>();
     public Shape hintLine = null;
     public Shape clickSelectedShape = null;
     public Group group = null;
@@ -73,7 +73,8 @@ public class Canvas extends JPanel{
 		if(this.clickSelectedShape != null) {
 			JFrame jFrame = new JFrame();
 			 String getMessage = JOptionPane.showInputDialog(jFrame, "Enter your message");
-			 clickSelectedShape.setNewName(getMessage);
+			 if(getMessage != null)
+				 clickSelectedShape.setNewName(getMessage);
 		}
 	}
 	

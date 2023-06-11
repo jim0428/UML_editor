@@ -29,8 +29,7 @@ public class CreateCompositionObj extends Mode{
 			secondP = new Port();
 			secondP.setPoint(e.getX(), e.getY());
 			//Line需要改一下，這邊不應該用AssciationLine，除非是Line物件
-			CompositionLine line = new CompositionLine();
-			line.setLinePort(firstP, secondP);
+			BaseLineClass line = new CompositionLine(firstP, secondP);
 			//線還沒畫上去的時候要有的線
 			canvas.hintLine = line;
 			canvas.repaint();
@@ -42,8 +41,7 @@ public class CreateCompositionObj extends Mode{
 		//這邊還要再判斷有沒有點到另一個點，不能是自己，然後要記得在port那邊存已經有的線 每次都要保存然後畫出來
 		secondP = contain(e.getX(),e.getY(),"second");
 		if(firstP != null && secondP != null && firstP != secondP) {
-			CompositionLine line = new CompositionLine();
-			line.setLinePort(firstP, secondP);
+			BaseLineClass line = new CompositionLine(firstP, secondP);
 			firstP.setLine(line);
 			secondP.setLine(line);
 			canvas.addShape(line);

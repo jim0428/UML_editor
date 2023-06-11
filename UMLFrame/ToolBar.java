@@ -61,13 +61,13 @@ public class ToolBar extends JToolBar{
 			
 			this.setIcon(new ImageIcon(getClass().getResource(url)));
 			
-			this.addActionListener(new chg_bgd_col());
+			this.addActionListener(new setListener());
 		
 			this.btnMode = btnMode;
 			
 		}
 		
-		private class chg_bgd_col implements ActionListener {
+		private class setListener implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
