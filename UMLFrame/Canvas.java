@@ -98,7 +98,6 @@ public class Canvas extends JPanel{
 	}
 	
 	public void unGroup() {
-
 		if(clickSelectedShape != null && clickSelectedShape.getSelectedObj()!= null) {
 			for(Shape groupingObj : clickSelectedShape.getSelectedObj()) {
 				shapes.add(groupingObj);
@@ -112,21 +111,18 @@ public class Canvas extends JPanel{
     @Override
 	public void paint(Graphics g) {
 	    setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		/* set canvas area */ /* set painting color */
 		Dimension dim = getSize();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, dim.width, dim.height);
 		
+		//draw shape and ports
 		for(Shape shape : shapes) {
 			shape.draw(g);
-			for(int i = 0;i < 4;i++) {
-				if(shape.getPorts(i) != null) {
-					if(shape.getSelectedState() || shape.getPorts(i).getLines()) 
-						shape.getPorts(i).drawPort(g);	
-				}		
-			}
+			//draw the port when being clicked or having lines connection
+			shape.drawSpecifcPort(g);
 		}
 		
+		//draw lines
 		for(BaseLineClass line : lines) {
 			line.draw(g);
 		}

@@ -12,6 +12,7 @@ public class UseCase extends Shape{
 	
 	public UseCase(int x, int y) {
 		super(x,y,HEIGHTNUM,WIDTHNUM);
+		super.setPorts(x,y);
 	}
 	
 	@Override

@@ -14,7 +14,7 @@ public class Group extends Shape{
 	Canvas canvas = Canvas.getCanvas();
 	
 	public Group() {
-		super(0,0,0,0);
+		super(10,10,10,10);
 		leftUpper   = new Point();
 		rightButtom = new Point();
 		selectedObjs = new ArrayList<Shape>();
@@ -22,37 +22,36 @@ public class Group extends Shape{
 	}
 	
 	public void setCoordinate() {
-		this.x1 = this.y1 = Integer.MAX_VALUE;
-		this.x2 = this.y2 = Integer.MIN_VALUE;
+		super.x1 = super.y1 = Integer.MAX_VALUE;
+		super.x2 = super.y2 = Integer.MIN_VALUE;
 		for(Shape s: this.selectedObjs) {
-			if(this.x1 > s.getX1()) {
-				this.x1 = s.getX1();
+			if(super.x1 > s.getX1()) {
+				super.x1 = s.getX1();
 			}
-			if(this.x2 < s.getX2()) {
-				this.x2 = s.getX2();
+			if(super.x2 < s.getX2()) {
+				super.x2 = s.getX2();
 			}
-			if(this.y1 > s.getY1()) {
-				
-				this.y1 = s.getY1();
+			if(super.y1 > s.getY1()) {
+				super.y1 = s.getY1();
 			}
-			if(this.y2 < s.getY2()) {
-				this.y2 = s.getY2();
+			if(super.y2 < s.getY2()) {
+				super.y2 = s.getY2();
 			}
 		}
-		this.height = this.y2 - this.y1;
-		this.width  = this.x2 - this.x1;
+		
+		super.width  = super.x2 - super.x1;
+		super.height = super.y2 - super.y1;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.black);
-		g.drawRect(x1, y1, width, height);
+		g.drawRect(super.x1, super.y1, super.width, super.height);
 
 		for(Shape s: selectedObjs) {
 			s.draw(g);
-
 		}
-		
+		//If selecting, the ports in the group obj are needed to be draw
 		if(this.selected) {
 			drawSelectedPorts(g);
 		}
@@ -65,13 +64,10 @@ public class Group extends Shape{
 			if(s.getSelectedObj() != null)
 				s.drawSelectedPorts(g);
 			for(int i = 0;i < 4;i++) {
-				if(s.getPorts(i) != null)
-					s.getPorts(i).drawPort(g);
+				s.getPorts(i).drawPort(g);
 			}
 		}
-
 	}
-	
 	
 	public void drawHintRegion(Graphics g) {
 		int offsetX = rightButtom.x - leftUpper.x;
@@ -117,58 +113,5 @@ public class Group extends Shape{
 		
 		for(Shape s:selectedObjs)
 			s.setNewObjLocation(moveX, moveY);
-	
-	}
-	
-	
-	@Override
-	public Shape checkClicked(Point p) {
-		//點下去的地方要比左上角x右邊，而且要比左上角的y低，比右下角的x左邊，比右下角的y上面
-		if(p.x - this.x1 > 0 && p.y - this.y1 > 0 && p.x - this.x2 < 0 && p.y - this.y2 < 0) {
-			return this;
-		}
-		return null;
-	}
-	
-	@Override
-	public Shape checkRegion(Point startP,Point endP) {
-		int offsetX = endP.x - startP.x;
-		int offsetY = endP.y - startP.y;
-		
-		
-		if(offsetX > 0 && offsetY > 0) { //滑鼠到右下
-			if(startP.x < this.x1 && startP.y < this.y1 &&  endP.x > this.x2 && endP.y > this.y2)
-				return this;
-		} 
-		else if(offsetX < 0 && offsetY > 0) { //滑鼠到左下
-			if(startP.x > this.x2 && startP.y < this.y1 &&  endP.x < this.x1 && endP.y > this.y2)
-				return this;
-		}
-		else if(offsetX > 0 && offsetY < 0) { //滑鼠到右上
-			if(startP.x < this.x1 && startP.y > this.y2 &&  endP.x > this.x2 && endP.y < this.y1)
-				return this;
-		}
-		else if(offsetX < 0 && offsetY < 0) { //滑鼠到左上
-			if(startP.x > this.x2 && startP.y > this.y2 &&  endP.x < this.x1 && endP.y < this.y1)
-				return this;
-		}
-		
-		return null;
-	}
-	
-	@Override
-	public void setSelectedState(boolean state) {
-		//把狀態相反
-		this.selected = state;
-	}
-	
-	@Override
-	public boolean getSelectedState() {
-		return this.selected;
-	}
-	
-	@Override
-	public void resetSelectedState() {
-		this.selected = false;
 	}
 }

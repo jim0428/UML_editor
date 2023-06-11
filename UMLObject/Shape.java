@@ -23,10 +23,10 @@ public class Shape {
 		this.x2 = x1 + width;
 		this.y2 = y1 + height;
 		this.selected = false;
-		this.setPorts(x1,y1);
+		
 	}
 	
-	private void setPorts(int x,int y) {
+	protected void setPorts(int x,int y) {
 		int width_mid = (width/2);
 		int height_mid = (height/2);
 		System.out.println(x+" "+y);
@@ -62,6 +62,15 @@ public class Shape {
 	
 	public void draw(Graphics g) {
 		System.out.print("Shape沒多型到");
+	}
+	
+	public void drawSpecifcPort(Graphics g) {
+		for(int i = 0;i < 4;i++) {
+			if(this.ports[i] != null){
+				if(this.selected || this.ports[i].getLines())
+					this.ports[i].drawPort(g);	
+			}
+		}
 	}
 	
 	public void setNewName(String newName) {
@@ -111,10 +120,12 @@ public class Shape {
 	public Port checkPort(Point p) {
 		//Set leftTop rightTop rightBottom leftBotom points
 		Point[] points = {new Point(x1,y1),new Point(x2,y1),new Point(x2,y2),new Point(x1,y2)};
+		
 		//Set center point
 		int centerX = x1 + (width / 2);
 		int centerY = y1 + (height / 2);
 		Point center = new Point(centerX,centerY);
+		
 		//Check four region => (top,right,center) | (right,,center) | (top,right,center) | (top,right,center) 
 		for(int i = 0;i < 4;i++) {
 			//Create a triangle to check whether p is in this region

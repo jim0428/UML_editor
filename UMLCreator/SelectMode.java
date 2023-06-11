@@ -13,7 +13,6 @@ public class SelectMode extends Mode{
 	ArrayList<Shape> shapes = null;
 	Canvas canvas = Canvas.getCanvas();
 
-	
 	public SelectMode() {
 		
 	}
@@ -48,7 +47,6 @@ public class SelectMode extends Mode{
 				canvas.clickSelectedShape.setSelectedState(true);
 				canvas.getShapes().remove(selectedShape);
 				canvas.getShapes().add(selectedShape);
-				System.out.println(canvas.clickSelectedShape.getSelectedState()+" "+canvas.clickSelectedShape);
 				break;
 			}
 		}
@@ -60,7 +58,6 @@ public class SelectMode extends Mode{
 	
 	@Override 
 	public void mouseDragged(MouseEvent e) {
-		
 		//startP
 		if(canvas.clickSelectedShape != null) {
 			int moveX = e.getX() - startP.x;
@@ -73,7 +70,6 @@ public class SelectMode extends Mode{
 		} 
 		else {
 			//RegionSelect
-
 			canvas.group.setPoint(startP,e.getPoint());
 			ArrayList<Shape> shapes = canvas.getShapes(); 
 			for(int i = 0;i < shapes.size();i++) {
@@ -85,10 +81,7 @@ public class SelectMode extends Mode{
 					shapes.get(i).setSelectedState(false);
 				}
 			}
-			
-			
 		}
-		
 	}
 	
 	@Override 
@@ -99,9 +92,9 @@ public class SelectMode extends Mode{
 			}
 		}
 		
-		canvas.group.setPoint(new Point(0,0), new Point(0,0));
+		//canvas.group.setPoint(new Point(0,0), new Point(0,0));
 		
-		System.out.println(canvas.group.getSelectedObj());
+		//System.out.println(canvas.group.getSelectedObj());
 		
 		canvas.dragging = false;
 	}

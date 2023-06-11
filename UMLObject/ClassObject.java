@@ -15,6 +15,7 @@ public class ClassObject extends Shape {
 	
 	public ClassObject(int x,int y){
 		super(x,y,HEIGHTNUM,WIDTHNUM);
+		super.setPorts(x,y);
 	}
 	
 	@Override
