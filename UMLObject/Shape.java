@@ -10,6 +10,10 @@ public class Shape {
 	protected boolean selected = false;
 	protected int depth = -1;
 	
+	public Shape() {
+		
+	}
+	
 	public int getX1() {
 		return x1;
 	}

@@ -2,11 +2,11 @@ package UMLFrame;
 
 import javax.swing.*;
 
+import UMLCreator.CreateLine;
+import UMLCreator.CreateShape;
+import UMLCreator.Mode;
+import UMLCreator.SelectMode;
 import UMLFrame.Canvas;
-import UMLObject.CreateLine;
-import UMLObject.CreateShape;
-import UMLObject.Mode;
-import UMLObject.SelectMode;
 import UMLObject.UseCase;
 
 import java.awt.*;

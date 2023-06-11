@@ -1,6 +1,8 @@
-package UMLObject;
+package UMLCreator;
 
 import java.awt.event.MouseEvent;
+
+import UMLObject.Shape;
 
 public class CreateShape extends Mode{
 	private String shapeType;

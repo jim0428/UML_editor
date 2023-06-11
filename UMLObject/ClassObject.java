@@ -14,7 +14,7 @@ public class ClassObject extends Shape {
 	protected String name = "Object name";
 	private Port[] ports = new Port[4];
 	
-	ClassObject(int x,int y){
+	public ClassObject(int x,int y){
 		this.width = 100;
 		this.height = 150;
 		this.x1 = x;

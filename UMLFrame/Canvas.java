@@ -6,11 +6,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import UMLCreator.Mode;
 import UMLFrame.Canvas;
 import UMLObject.BaseLineClass;
-import UMLObject.CreateClassObject;
 import UMLObject.Group;
-import UMLObject.Mode;
 import UMLObject.Shape;
 import UMLObject.Line;
 

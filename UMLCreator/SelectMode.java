@@ -1,10 +1,12 @@
-package UMLObject;
+package UMLCreator;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import UMLFrame.Canvas;
+import UMLObject.Group;
+import UMLObject.Shape;
 
 public class SelectMode extends Mode{
 	private Point startP = null; 

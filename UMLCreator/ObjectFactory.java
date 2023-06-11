@@ -1,4 +1,13 @@
-package UMLObject;
+package UMLCreator;
+
+import UMLObject.BaseLineClass;
+import UMLObject.ClassObject;
+import UMLObject.CompositionLine;
+import UMLObject.GeneralLine;
+import UMLObject.Line;
+import UMLObject.Port;
+import UMLObject.Shape;
+import UMLObject.UseCase;
 
 public class ObjectFactory {
 	

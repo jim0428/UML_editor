@@ -1,9 +1,13 @@
-package UMLObject;
+package UMLCreator;
 
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+
 import UMLFrame.Canvas;
+import UMLObject.BaseLineClass;
+import UMLObject.Port;
+import UMLObject.Shape;
 
 public class CreateLine extends Mode{
 	protected Canvas canvas;

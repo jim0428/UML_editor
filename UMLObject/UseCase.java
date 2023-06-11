@@ -12,7 +12,7 @@ public class UseCase extends Shape{
 	protected String name = "Object name";
 	private Port[] ports = new Port[4];
 	
-	UseCase(int x, int y) {
+	public UseCase(int x, int y) {
 		this.width = 150;
 		this.height = 100;
 		this.x1 = x;
