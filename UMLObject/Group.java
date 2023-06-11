@@ -14,6 +14,7 @@ public class Group extends Shape{
 	Canvas canvas = Canvas.getCanvas();
 	
 	public Group() {
+		super(0,0,0,0);
 		leftUpper   = new Point();
 		rightButtom = new Point();
 		selectedObjs = new ArrayList<Shape>();
