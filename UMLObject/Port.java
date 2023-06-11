@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Port{
 	private int x1,y1,width,height;
 	//要存line
-	private ArrayList<Shape> Lines = new ArrayList<Shape>();
+	private ArrayList<BaseLineClass> Lines = new ArrayList<BaseLineClass>();
 	
 	public void setPoint(int x1,int y1) {
 		this.x1 = x1;
@@ -30,7 +30,7 @@ public class Port{
 		this.y1 = newY;
 	}
 	
-	public void setLine(Shape line) {
+	public void setLine(BaseLineClass line) {
 		Lines.add(line);
 	}
 	

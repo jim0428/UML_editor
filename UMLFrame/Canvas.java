@@ -7,6 +7,7 @@ import java.awt.event.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import UMLFrame.Canvas;
+import UMLObject.BaseLineClass;
 import UMLObject.CreateClassObject;
 import UMLObject.Group;
 import UMLObject.Mode;
@@ -30,7 +31,8 @@ public class Canvas extends JPanel{
     private EventListener listener = null;
    
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
-    public Shape hintLine = null;
+    private ArrayList<BaseLineClass> lines = new ArrayList<BaseLineClass>();
+    public BaseLineClass hintLine = null;
     public Shape clickSelectedShape = null;
     public Group group = null;
     public boolean dragging = false; 
@@ -59,6 +61,10 @@ public class Canvas extends JPanel{
 		shapes.add(s);
 	}
     
+	public void addLines(BaseLineClass line) {
+		lines.add(line);
+	}
+	
 	public Canvas(){
       //setPreferredSize(new Dimension(WIDTH, HEIGHT));
       //setBackground(Color.WHITE);
@@ -121,7 +127,11 @@ public class Canvas extends JPanel{
 				}		
 			}
 		}
-					
+		
+		for(BaseLineClass line : lines) {
+			line.draw(g);
+		}
+		
 		if(hintLine != null) {
 			hintLine.draw(g);
 		}
@@ -131,7 +141,4 @@ public class Canvas extends JPanel{
 		}
 	
 	}
-    
-    
-    
 }

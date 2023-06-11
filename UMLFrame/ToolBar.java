@@ -3,11 +3,8 @@ package UMLFrame;
 import javax.swing.*;
 
 import UMLFrame.Canvas;
-import UMLObject.CreateClassObject;
-import UMLObject.CreateCompositionObj;
-import UMLObject.CreateGenLine;
-import UMLObject.CreateLineObject;
-import UMLObject.CreateUseCaseObject;
+import UMLObject.CreateLine;
+import UMLObject.CreateShape;
 import UMLObject.Mode;
 import UMLObject.SelectMode;
 import UMLObject.UseCase;
@@ -37,19 +34,19 @@ public class ToolBar extends JToolBar{
 		button = new ButtonItem("img/select.png",new SelectMode());
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/associationLine.png",new CreateLineObject());
+		button = new ButtonItem("img/associationLine.png",new CreateLine("association"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/generalizationLine.png",new CreateGenLine());
+		button = new ButtonItem("img/generalizationLine.png",new CreateLine("general"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/compositionLine.png",new CreateCompositionObj());
+		button = new ButtonItem("img/compositionLine.png",new CreateLine("composition"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/class.png",new CreateClassObject());
+		button = new ButtonItem("img/class.png",new CreateShape("class"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/useCase.png",new CreateUseCaseObject());
+		button = new ButtonItem("img/useCase.png",new CreateShape("usecase"));
 		myJPanel.add(button);
 		
 	}
