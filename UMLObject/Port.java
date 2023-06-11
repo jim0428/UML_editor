@@ -6,15 +6,17 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Port{
+	private final static int PORTHEIGHT = 5;
+	private final static int PORTWIDTH = 5;
 	private int x1,y1,width,height;
 	//要存line
 	private ArrayList<BaseLineClass> Lines = new ArrayList<BaseLineClass>();
 	
-	public void setPoint(int x1,int y1) {
+	public Port(int x1,int y1) {
 		this.x1 = x1;
 		this.y1 = y1;
-		this.width = 5;
-		this.height = 5;
+		this.width = PORTHEIGHT;
+		this.height = PORTWIDTH;
 	}
 	
 	public int getX() {
@@ -46,14 +48,4 @@ public class Port{
 		g.fillRect(x1, y1, width, height);
 	}
 	
-	public Port isCantained(int x,int y) {
-		if (Math.abs(x - x1) <= 10 && Math.abs(y - y1) <= 10){
-			return this;
-		}
-		return null;
-	}
-	
-	/*public addLine(Line) {
-	
-	}*/
 }

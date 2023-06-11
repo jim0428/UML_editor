@@ -2,6 +2,7 @@ package UMLObject;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -30,37 +31,33 @@ public class Shape {
 		int height_mid = (height/2);
 		System.out.println(x+" "+y);
 		//上
-		Port port = new Port();
-		port.setPoint(x + width_mid,y - 5);
+		Port port = new Port(x + width_mid,y - 5);
 		ports[0] = port;
 		//右
-		port = new Port();
-		port.setPoint(x + width,y + height_mid);
+		port = new Port(x + width,y + height_mid);
 		ports[1] = port;
 		//下
-		port = new Port();
-		port.setPoint(x + width_mid,y + height);
+		port = new Port(x + width_mid,y + height);
 		ports[2] = port;
 		//左
-		port = new Port();
-		port.setPoint(x - 5,y + height_mid);
+		port = new Port(x - 5,y + height_mid);
 		ports[3] = port;
 	}
 	
 	public int getX1() {
-		return x1;
+		return this.x1;
 	}
 	
 	public int getX2() {
-		return x2;
+		return this.x2;
 	}
 	
 	public int getY1() {
-		return y1;
+		return this.y1;
 	}
 	
 	public int getY2() {
-		return y2;
+		return this.y2;
 	}
 	
 	public void draw(Graphics g) {
@@ -72,7 +69,6 @@ public class Shape {
 		canvas.repaint();
 	}
 	
-
 	public Port getPorts(int pos) {
 		return ports[pos];
 	}
@@ -111,7 +107,34 @@ public class Shape {
 		return null;
 	}
 	
-	//for class or useCase
+	//For port check
+	public Port checkPort(Point p) {
+		//Set leftTop rightTop rightBottom leftBotom points
+		Point[] points = {new Point(x1,y1),new Point(x2,y1),new Point(x2,y2),new Point(x1,y2)};
+		//Set center point
+		int centerX = x1 + (width / 2);
+		int centerY = y1 + (height / 2);
+		Point center = new Point(centerX,centerY);
+		//Check four region => (top,right,center) | (right,,center) | (top,right,center) | (top,right,center) 
+		for(int i = 0;i < 4;i++) {
+			//Create a triangle to check whether p is in this region
+			//If yes, return the port which reponses to the direction
+			Polygon triangle = new Polygon();
+			
+			int nextP = (i + 1) % 4; 
+			triangle.addPoint(points[i].x,points[i].y);
+			triangle.addPoint(points[nextP].x,points[nextP].y);
+			triangle.addPoint(center.x,center.y);
+			
+			if(triangle.contains(p)) {
+				return this.ports[i];
+			}
+		}
+		
+		return null;
+	}
+	
+	//For class or useCase
 	public void setNewObjLocation(int moveX,int moveY) {
 		this.x1 = this.x1 + moveX;
 		this.y1 = this.y1 + moveY;
