@@ -64,7 +64,8 @@ public class Group extends Shape{
 			if(s.getSelectedObj() != null)
 				s.drawSelectedPorts(g);
 			for(int i = 0;i < 4;i++) {
-				s.getPorts(i).drawPort(g);
+				if(s.getPorts(i) != null)
+					s.getPorts(i).drawPort(g);
 			}
 		}
 	}

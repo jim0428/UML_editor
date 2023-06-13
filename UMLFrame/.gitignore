@@ -9,3 +9,8 @@
 /UML.class
 /ToolBar$ButtonItem$setListener.class
 /ToolBar$setListener.class
+/MenuBar$MenuItem.class
+/MenuBar$MenuItem$ChgName.class
+/MenuBar$MenuItem$GroupFunc.class
+/MenuBar$MenuItem$UnGroupFunc.class
+/MenuBar$MenuItem$setListener.class

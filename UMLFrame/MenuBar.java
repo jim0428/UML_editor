@@ -12,6 +12,11 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import UMLCreator.ChangeName;
+import UMLCreator.Mode;
+import UMLCreator.ToGroup;
+import UMLCreator.UnGroup;
+
 public class MenuBar extends JMenuBar {
 	Canvas canvas = Canvas.getCanvas();
 	
@@ -31,57 +36,28 @@ public class MenuBar extends JMenuBar {
 		menu_edit = new JMenu("Edit");
 		menuBar.add(menu_edit);
 		
-		chg_name = new JMenuItem("Change object name");
-		chg_name.addActionListener(new ChgName());
+		chg_name = new MenuItem("Change object name",new ChangeName());
 		menu_edit.add(chg_name);
 		
 		
-		gp = new JMenuItem("Group");
-		gp.addActionListener(new GroupFunc());
+		gp = new MenuItem("Group",new ToGroup());
 		menu_edit.add(gp);
 	
 		
-		ugp = new JMenuItem("Ungroup");
-		ugp.addActionListener(new UnGroupFunc());
+		ugp = new MenuItem("Ungroup",new UnGroup());
 		menu_edit.add(ugp);
 			
 		menuBar.add(menu_edit);
 	}
 	
-	private class ChgName implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			canvas.chgName();
+	private class MenuItem extends JMenuItem{
+		public MenuItem(String name,Mode mode) {
+			this.setText(name);
+			
+			this.addMouseListener(mode);
 		}
-	}
 	
-	private class GroupFunc implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			canvas.toGroup();
-		}
 	}
-	
-	private class UnGroupFunc implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			canvas.unGroup();
-		}
-	}
-	
-//	public void addListener(Canvas can) {
-//		
-//		chg_name.addActionListener(new ActionListener() {
-//	        @Override
-//	        public void actionPerformed(ActionEvent e) {
-//	        	can.setColor(Color.BLACK);
-//	        }
-//	     });
-//		
-//	}
 	
 	public JMenuBar getJmenu(){
 		return menuBar;

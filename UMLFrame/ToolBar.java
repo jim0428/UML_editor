@@ -58,10 +58,9 @@ public class ToolBar extends JToolBar{
 			
 			this.setIcon(new ImageIcon(getClass().getResource(url)));
 			
-			this.addActionListener(new setListener());
-		
 			this.btnMode = btnMode;
 			
+			this.addActionListener(new setListener());		
 		}
 		
 		private class setListener implements ActionListener {

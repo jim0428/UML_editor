@@ -10,7 +10,6 @@ import UMLObject.Shape;
 import UMLObject.UseCase;
 
 public class ObjectFactory {
-	
 	public static Shape createShapeObj(int X,int Y,String shapeType) {
 		if(shapeType == "class") {
 			return new ClassObject(X,Y);
