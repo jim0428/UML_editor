@@ -62,8 +62,6 @@ public class Canvas extends JPanel{
 		lines.add(line);
 	}
 	
-
-	
 	public ArrayList<Shape> getShapes(){
 		return shapes;
 	}
