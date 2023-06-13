@@ -1,5 +1,7 @@
 package UMLCreator;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -63,6 +65,7 @@ public class SelectMode extends Mode{
 			int moveX = e.getX() - startP.x;
 			int moveY = e.getY() - startP.y;
 			canvas.clickSelectedShape.setNewObjLocation(moveX, moveY);
+			
 			canvas.repaint();
 			
 			startP = e.getPoint();
@@ -98,5 +101,7 @@ public class SelectMode extends Mode{
 		
 		canvas.dragging = false;
 	}
+	
+
 	
 }
