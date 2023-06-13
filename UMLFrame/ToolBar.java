@@ -32,30 +32,34 @@ public class ToolBar extends JToolBar{
         // Add components to left panel
 		myJPanel.setLayout(new GridLayout(toolbarCounts,1));
         
-		button = new ButtonItem("img/select.png",new SelectMode());
+		
+		button = new ButtonItem("img/select.png",selectCol,new SelectMode());
+		selectedBtn = button;
+		canvas.setCurrentMode(new SelectMode());
+		canvas.setCurrentListener();
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/associationLine.png",new CreateLine("association"));
+		button = new ButtonItem("img/associationLine.png",originCol,new CreateLine("association"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/generalizationLine.png",new CreateLine("general"));
+		button = new ButtonItem("img/generalizationLine.png",originCol,new CreateLine("general"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/compositionLine.png",new CreateLine("composition"));
+		button = new ButtonItem("img/compositionLine.png",originCol,new CreateLine("composition"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/class.png",new CreateShape("class"));
+		button = new ButtonItem("img/class.png",originCol,new CreateShape("class"));
 		myJPanel.add(button);
 		
-		button = new ButtonItem("img/useCase.png",new CreateShape("usecase"));
+		button = new ButtonItem("img/useCase.png",originCol,new CreateShape("usecase"));
 		myJPanel.add(button);
 		
 	}
 	
 	private class ButtonItem extends JButton {
 		Mode btnMode;
-		public ButtonItem(String url,Mode btnMode){
-			this.setBackground(originCol);
+		public ButtonItem(String url,Color color,Mode btnMode){
+			this.setBackground(color);
 			
 			this.setIcon(new ImageIcon(getClass().getResource(url)));
 			
@@ -69,7 +73,7 @@ public class ToolBar extends JToolBar{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(selectedBtn != null)
-					selectedBtn.setBackground(new Color(255,255,255));
+					selectedBtn.setBackground(originCol);
 				selectedBtn = (JButton) e.getSource();
 				selectedBtn.setBackground(selectCol);
 				canvas.setCurrentMode(btnMode);
@@ -87,15 +91,5 @@ public class ToolBar extends JToolBar{
     } 	
     
  
-    
-//	public void addListener(Canvas can) {
-//		
-//		selectedBtn.addActionListener(new ActionListener() {
-//	        @Override
-//	        public void actionPerformed(ActionEvent e) {
-//	        	can.setColor(Color.BLACK);
-//	        }
-//	     });
-//	}
 	
 }
