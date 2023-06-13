@@ -5,16 +5,17 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import UMLCreator.CanvasSingleton;
 import UMLFrame.Canvas;
 
 public class Group extends Shape{
 	private Point leftUpper,rightButtom;
 	private ArrayList<Shape> selectedObjs;
 	
-	Canvas canvas = Canvas.getCanvas();
+	Canvas canvas =  CanvasSingleton.getCanvas();
 	
 	public Group() {
-		super(10,10,10,10);
+		super(-1,-1,-1,-1);
 		leftUpper   = new Point();
 		rightButtom = new Point();
 		selectedObjs = new ArrayList<Shape>();

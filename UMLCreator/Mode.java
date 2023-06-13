@@ -8,7 +8,7 @@ import UMLFrame.Canvas;
 
 public abstract class Mode implements MouseListener,MouseMotionListener {
 
-	protected Canvas canvas = Canvas.getCanvas();
+	protected Canvas canvas = CanvasSingleton.getCanvas();
 	
 	@Override
 	public void mouseDragged(MouseEvent e) {

@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import UMLCreator.CanvasSingleton;
 import UMLCreator.Mode;
 import UMLFrame.Canvas;
 import UMLObject.BaseLineClass;
@@ -24,7 +25,7 @@ public class Canvas extends JPanel{
     private static final int WIDTH = 500;
     private static final int HEIGHT = 500;
     
-    private static Canvas canvas = null;
+    //private static Canvas canvas = null;
     
     private Mode currentMode = null;
     private EventListener listener = null;
@@ -38,17 +39,9 @@ public class Canvas extends JPanel{
     //private Listener
     
 	public Canvas(){
-	      
-	      
+	  //    this.canvas = CanvasSingleton.getCanvas();
 	}
-    
-    public static Canvas getCanvas(){
-    	if(canvas == null){
-    		canvas = new Canvas();
-    	}
-    	return canvas;
-    }
-    
+   
     public void setCurrentMode(Mode currentMode) {
     	this.currentMode = currentMode;
     }
@@ -98,7 +91,7 @@ public class Canvas extends JPanel{
 			hintLine.draw(g);
 		}
 		
-		if(group != null && canvas.dragging) {
+		if(group != null && this.dragging) {
 			group.drawHintRegion(g);
 		}
 	

@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import UMLCreator.CanvasSingleton;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,7 +24,7 @@ public class UML extends JFrame {
         // Create components
         //canvas = new DrawingCanvas();
     	
-    	canvas = Canvas.getCanvas();
+    	canvas =  CanvasSingleton.getCanvas();
         menubar = new MenuBar();
         toolbar = new ToolBar();
        

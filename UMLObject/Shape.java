@@ -6,10 +6,11 @@ import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import UMLCreator.CanvasSingleton;
 import UMLFrame.Canvas;
 
 public class Shape {
-	Canvas canvas = Canvas.getCanvas();
+	Canvas canvas =  CanvasSingleton.getCanvas();
 	protected int x1 = -1 ,y1 = -1,x2 = -1 ,y2 = -1,height = -1,width = -1;
 	protected boolean selected = false;
 	protected String name = "Object name";

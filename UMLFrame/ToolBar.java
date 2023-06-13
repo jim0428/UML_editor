@@ -2,6 +2,7 @@ package UMLFrame;
 
 import javax.swing.*;
 
+import UMLCreator.CanvasSingleton;
 import UMLCreator.CreateLine;
 import UMLCreator.CreateShape;
 import UMLCreator.Mode;
@@ -24,7 +25,7 @@ public class ToolBar extends JToolBar{
 	private Canvas canvas;
 	
 	public ToolBar(){
-		canvas = Canvas.getCanvas();
+		canvas =  CanvasSingleton.getCanvas();
 		
 		myJPanel = new JPanel();
 		

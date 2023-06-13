@@ -12,13 +12,14 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import UMLCreator.CanvasSingleton;
 import UMLCreator.ChangeName;
 import UMLCreator.Mode;
 import UMLCreator.ToGroup;
 import UMLCreator.UnGroup;
 
 public class MenuBar extends JMenuBar {
-	Canvas canvas = Canvas.getCanvas();
+	Canvas canvas =  CanvasSingleton.getCanvas();
 	
 	private JMenuBar menuBar;
 	

@@ -11,7 +11,7 @@ import UMLObject.Shape;
 public class SelectMode extends Mode{
 	private Point startP = null; 
 	ArrayList<Shape> shapes = null;
-	Canvas canvas = Canvas.getCanvas();
+	Canvas canvas = CanvasSingleton.getCanvas();
 
 	public SelectMode() {
 		
