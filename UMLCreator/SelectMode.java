@@ -31,7 +31,7 @@ public class SelectMode extends Mode{
 		canvas.clickSelectedShape = null;
 		
 		if(canvas.group != null) {
-			for(Shape s : canvas.group.getSelectedObj()) {
+			for(Shape s : canvas.group.getGroupSelectedObj()) {
 				s.resetSelectedState();
 			}
 		}

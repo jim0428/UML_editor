@@ -21,7 +21,7 @@ public class Group extends Shape{
 		selected = false;
 	}
 	
-	public void setCoordinate() {
+	public void setGroupCoordinate() {
 		super.x1 = super.y1 = Integer.MAX_VALUE;
 		super.x2 = super.y2 = Integer.MIN_VALUE;
 		for(Shape s: this.selectedObjs) {
@@ -61,7 +61,7 @@ public class Group extends Shape{
 	@Override
 	protected void drawSelectedPorts(Graphics g) {
 		for(Shape s: selectedObjs) {			
-			if(s.getSelectedObj() != null)
+			if(s.getGroupSelectedObj() != null)
 				s.drawSelectedPorts(g);
 			for(int i = 0;i < 4;i++) {
 				if(s.getPorts(i) != null)
@@ -101,7 +101,7 @@ public class Group extends Shape{
 	}
 	
 	@Override
-	public ArrayList<Shape> getSelectedObj(){
+	public ArrayList<Shape> getGroupSelectedObj(){
 		return selectedObjs;
 	}
 	

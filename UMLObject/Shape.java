@@ -64,6 +64,10 @@ public class Shape {
 		System.out.print("Shape沒多型到");
 	}
 	
+	protected void drawSelectedPorts(Graphics g) {
+		
+	}
+	
 	public void drawSpecifcPort(Graphics g) {
 		for(int i = 0;i < 4;i++) {
 			if(this.ports[i] != null){
@@ -178,13 +182,11 @@ public class Shape {
 		this.selected = false;
 	}
 	
-	public ArrayList<Shape> getSelectedObj(){
+	public ArrayList<Shape> getGroupSelectedObj(){
 		return null;
 	}
 	
-	protected void drawSelectedPorts(Graphics g) {
-		
-	}
+
 	
 	
 }

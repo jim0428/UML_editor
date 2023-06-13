@@ -37,6 +37,11 @@ public class Canvas extends JPanel{
     public boolean dragging = false; 
     //private Listener
     
+	public Canvas(){
+	      
+	      
+	}
+    
     public static Canvas getCanvas(){
     	if(canvas == null){
     		canvas = new Canvas();
@@ -64,11 +69,7 @@ public class Canvas extends JPanel{
 		lines.add(line);
 	}
 	
-	public Canvas(){
-      //setPreferredSize(new Dimension(WIDTH, HEIGHT));
-      //setBackground(Color.WHITE);
-      
-	}
+
 	
 	public ArrayList<Shape> getShapes(){
 		return shapes;

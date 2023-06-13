@@ -11,7 +11,6 @@ import UMLObject.Port;
 import UMLObject.Shape;
 
 public class CreateLine extends Mode{
-	protected Canvas canvas;
 	protected ArrayList<Shape> shapes;
 	
 	protected Port firstP = null;
@@ -20,8 +19,7 @@ public class CreateLine extends Mode{
 	private String lineType;
 	
 	public CreateLine(String lineType){
-		this.canvas = Canvas.getCanvas();
-		this.shapes = canvas.getShapes();
+		this.shapes = super.canvas.getShapes();
 		this.lineType = lineType;
 	}
 	
