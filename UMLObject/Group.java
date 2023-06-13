@@ -74,30 +74,19 @@ public class Group extends Shape{
 		}
 	}
 	
-	public void drawHintRegion(Graphics g) {
-
-		
-		int offsetX = rightButtom.x - leftUpper.x;
-		int offsetY = rightButtom.y - leftUpper.y;
-		
+	public void drawHintRegion(Graphics g) {		
 		//g.setColor(Color.red);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.BLACK);
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, 0.2f));
 
 		
-		if(offsetX > 0 && offsetY > 0) { //滑鼠到右下
-			g2d.fillRect(leftUpper.x, leftUpper.y, Math.abs(offsetX), Math.abs(offsetY));	
-		} 
-		else if(offsetX < 0 && offsetY > 0) { //滑鼠到左下
-			g2d.fillRect(rightButtom.x , leftUpper.y , Math.abs(offsetX), Math.abs(offsetY));
-		}
-		else if(offsetX > 0 && offsetY < 0) {
-			g2d.fillRect(leftUpper.x , rightButtom.y , Math.abs(offsetX), Math.abs(offsetY));
-		}
-		else if(offsetX < 0 && offsetY < 0) {
-			g2d.fillRect(rightButtom.x , rightButtom.y , Math.abs(offsetX), Math.abs(offsetY));
-		}
+		int minX = Math.min(leftUpper.x,rightButtom.x);
+		int maxX = Math.max(leftUpper.x,rightButtom.x);
+		int minY = Math.min(leftUpper.y,rightButtom.y);
+		int maxY = Math.max(leftUpper.y,rightButtom.y);
+		
+		g2d.fillRect(minX, minY, maxX - minX, maxY - minY);
 		
 		canvas.repaint();
 	}

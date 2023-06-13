@@ -39,7 +39,7 @@ public class Canvas extends JPanel{
     //private Listener
     
 	public Canvas(){
-	  //    this.canvas = CanvasSingleton.getCanvas();
+
 	}
    
     public void setCurrentMode(Mode currentMode) {
