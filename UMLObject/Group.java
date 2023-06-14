@@ -25,22 +25,19 @@ public class Group extends Shape{
 		selected = false;
 	}
 	
+	public void setPoint(Point leftUpper,Point rightButtom) {
+		this.leftUpper   = leftUpper;
+		this.rightButtom = rightButtom;
+	}
+	
 	public void setGroupCoordinate() {
 		super.x1 = super.y1 = Integer.MAX_VALUE;
 		super.x2 = super.y2 = Integer.MIN_VALUE;
 		for(Shape s: this.selectedObjs) {
-			if(super.x1 > s.getX1()) {
-				super.x1 = s.getX1();
-			}
-			if(super.x2 < s.getX2()) {
-				super.x2 = s.getX2();
-			}
-			if(super.y1 > s.getY1()) {
-				super.y1 = s.getY1();
-			}
-			if(super.y2 < s.getY2()) {
-				super.y2 = s.getY2();
-			}
+			super.x1 = Math.min(super.x1,s.getX1());
+			super.x2 = Math.max(super.x2,s.getX2());
+			super.y1 = Math.min(super.y1,s.getY1());
+			super.y2 = Math.max(super.y2,s.getY2());
 		}
 		
 		super.width  = super.x2 - super.x1;
@@ -91,10 +88,7 @@ public class Group extends Shape{
 		canvas.repaint();
 	}
 	
-	public void setPoint(Point leftUpper,Point rightButtom) {
-		this.leftUpper   = leftUpper;
-		this.rightButtom = rightButtom;
-	}
+
 	
 	public void setSelectedObj(Shape s){
 		selectedObjs.add(s);

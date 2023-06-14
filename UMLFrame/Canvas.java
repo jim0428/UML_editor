@@ -25,9 +25,6 @@ public class Canvas extends JPanel{
     private static final int WIDTH = 500;
     private static final int HEIGHT = 500;
     
-    //private static Canvas canvas = null;
-    
-    private Mode currentMode = null;
     private EventListener listener = null;
    
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
@@ -41,12 +38,8 @@ public class Canvas extends JPanel{
 	public Canvas(){
 
 	}
-   
-    public void setCurrentMode(Mode currentMode) {
-    	this.currentMode = currentMode;
-    }
     
-    public void setCurrentListener() {
+    public void setCurrentListener(Mode currentMode) {
 		this.removeMouseMotionListener((MouseMotionListener) listener);
 		this.removeMouseListener((MouseListener) listener);
 		this.listener = currentMode;

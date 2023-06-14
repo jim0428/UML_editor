@@ -35,8 +35,7 @@ public class ToolBar extends JToolBar{
 		
 		button = new ButtonItem("img/select.png",selectCol,new SelectMode());
 		selectedBtn = button;
-		canvas.setCurrentMode(new SelectMode());
-		canvas.setCurrentListener();
+		canvas.setCurrentListener(new SelectMode());
 		myJPanel.add(button);
 		
 		button = new ButtonItem("img/associationLine.png",originCol,new CreateLine("association"));
@@ -71,13 +70,11 @@ public class ToolBar extends JToolBar{
 		private class setListener implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(selectedBtn != null)
 					selectedBtn.setBackground(originCol);
 				selectedBtn = (JButton) e.getSource();
 				selectedBtn.setBackground(selectCol);
-				canvas.setCurrentMode(btnMode);
-				canvas.setCurrentListener();
+				canvas.setCurrentListener(btnMode);
 			}
 		}
 	}
